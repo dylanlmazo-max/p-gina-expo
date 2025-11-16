@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Arquitectónico – Renders</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Helvetica', sans-serif;
+    }
+
+    html, body {
+        height: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-size: cover;
+        background-position: center;
+        transition: background-image 1s ease-in-out;
+    }
+
+    /* Contenedor general */
+    .section {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 0 0 10px black;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .overlay {
+        background: rgba(0,0,0,0.35);
+        backdrop-filter: blur(4px);
+        padding: 30px 40px;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.3rem;
+        max-width: 850px;
+        margin: auto;
+    }
+
+</style>
+</head>
+<body>
+
+<!-- SECCIÓN 1 -->
+<div class="section" data-bg="img/render1.jpg">
+    <div class="overlay">
+        <h1>Proyecto Arquitectónico</h1>
+        <p>
+            Una propuesta residencial contemporánea que combina líneas puras, iluminación estratégica 
+            y una relación fluida entre interior y exterior.
+        </p>
+    </div>
+</div>
+
+<!-- SECCIÓN 2 -->
+<div class="section" data-bg="img/render2.jpg">
+    <div class="overlay">
+        <h1>Fachada & Noche</h1>
+        <p>
+            La iluminación perimetral redefine la volumetría y resalta la estética moderna de la vivienda.
+        </p>
+    </div>
+</div>
+
+<!-- SECCIÓN 3 -->
+<div class="section" data-bg="img/render3.jpg">
+    <div class="overlay">
+        <h1>Hall & Doble Altura</h1>
+        <p>
+            Una apertura vertical que baña el interior de luz natural y potencia la sensación espacial.
+        </p>
+    </div>
+</div>
+
+<!-- SECCIÓN 4 -->
+<div class="section" data-bg="img/render4.jpg">
+    <div class="overlay">
+        <h1>Espacios Familiares</h1>
+        <p>
+            Ambientes cálidos donde la vida cotidiana se fusiona con una arquitectura equilibrada y funcional.
+        </p>
+    </div>
+</div>
+
+<!-- SECCIÓN 5 -->
+<div class="section" data-bg="img/render5.jpg">
+    <div class="overlay">
+        <h1>Patio & Conexión Exterior</h1>
+        <p>
+            El área social se extiende al jardín mediante grandes paños vidriados que desdibujan los límites.
+        </p>
+    </div>
+</div>
+
+<!-- SECCIÓN 6 -->
+<div class="section" data-bg="img/render6.jpg">
+    <div class="overlay">
+        <h1>Cochera & Urbanidad</h1>
+        <p>
+            Espacios limpios, minimalistas, y funcionales dentro de un contexto urbano moderno.
+        </p>
+    </div>
+</div>
+
+<script>
+    const sections = document.querySelectorAll(".section");
+
+    function updateBackground() {
+        let index = sections.length - 1;
+
+        for (let i = 0; i < sections.length; i++) {
+            const rect = sections[i].getBoundingClientRect();
+
+            if (rect.top <= window.innerHeight * 0.5) {
+                index = i;
+            }
+        }
+
+        const bg = sections[index].getAttribute("data-bg");
+        document.body.style.backgroundImage = `url(${bg})`;
+    }
+
+    document.addEventListener("scroll", updateBackground);
+    window.onload = updateBackground;
+</script>
+
+</body>
+</html>
